@@ -67,6 +67,10 @@
 							<div class="6u$ 12u$(xsmall)">
 								<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
 							</div>
+							<div class="6u$ 12u$(xsmall)">
+								<input type="text" name="demo-subject" id="demo-subject" value=""
+									placeholder="subject" />
+							</div>
 							<!-- Break -->
 							<!-- <div class="12u$">
 								<div class="select-wrapper">
@@ -109,8 +113,8 @@
 							<!-- Break -->
 							<div class="12u$">
 								<ul class="actions">
-									<li><input type="submit" value="Send Message" class="special" /></li>
-									<li><input type="reset" value="Reset" /></li>
+									<li><input id="emailLink" type="submit" value="Send Message" class="special" /></li>
+									<li><input id="reset" type="reset" value="Reset" /></li>
 								</ul>
 							</div>
 						</div>
@@ -235,6 +239,30 @@
 	</div>
 
 	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#emailLink').on('click', function (event) {
+				event.preventDefault();
+
+				var email = 'newfuturehomehealth@gmail.com';
+				var subject = $('#demo-subject').val();
+				var emailBody = $('#demo-name').val() + '   ' + $('#demo-message').val();
+				window.location = 'mailto:' + email + '?subject=' + subject + '&body=' + emailBody;
+				$('#demo-subject').val(" ");
+				$('#demo-name').val(" ");
+				$('#demo-message').val(" ");
+				$('#demo-email').val(" ");
+			});
+
+			$('#reset').on('click', function (event) {
+				$('#demo-subject').val(" ");
+				$('#demo-name').val(" ");
+				$('#demo-message').val(" ");
+				$('#demo-email').val(" ");
+			});
+		});
+	</script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/util.js"></script>
